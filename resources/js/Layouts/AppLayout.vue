@@ -52,6 +52,24 @@ const logout = () => {
                                     Dashboard
                                 </NavLink>
                             </div>
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                                <NavLink :href="route('categories.index')" :active="route().current('categories.*')"
+                                         v-if="$page.props.user.permissions.includes('read categories')">
+                                    Categories
+                                </NavLink>
+                            </div>
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                                <NavLink :href="route('lessons.index')" :active="route().current('lessons.*')"
+                                         v-if="$page.props.user.permissions.includes('read lessons')">
+                                    Lessons
+                                </NavLink>
+                            </div>
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                                <NavLink :href="route('roles.index')" :active="route().current('roles.*')"
+                                         v-if="$page.props.user.permissions.includes('read roles')">
+                                    Roles
+                                </NavLink>
+                            </div>
                         </div>
 
                         <div class="hidden sm:flex sm:items-center sm:ms-6">
@@ -193,6 +211,18 @@ const logout = () => {
                     <div class="pt-2 pb-3 space-y-1">
                         <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
                             Dashboard
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink :href="route('categories.index')" :active="route().current('categories.*')"
+                                           v-if="$page.props.user.permissions.includes('read categories')">
+                            Categories
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink :href="route('lessons.index')" :active="route().current('lessons.*')"
+                                           v-if="$page.props.user.permissions.includes('read lessons')">
+                            Lessons
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink :href="route('roles.index')" :active="route().current('roles.*')"
+                                           v-if="$page.props.user.permissions.includes('read roles')">
+                            Roles
                         </ResponsiveNavLink>
                     </div>
 
