@@ -22,8 +22,8 @@ class UserSeeder extends Seeder
         $admin->assignRole('admin');
 
         $editor = User::create([
-            'name'=>'user',
-            'email'=>'user@mail.cl',
+            'name'=>'editor',
+            'email'=>'editor@mail.cl',
             'password'=>Hash::make('1234')
         ]);
 

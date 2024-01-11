@@ -22,7 +22,7 @@ Route::get('/', [DashboardController::class,'index']);
 /** Rutas con autenticacion */
 Route::middleware(['auth:sanctum',config('jetstream.auth_session'), 'verified',])->group(function () {
     Route::get('/dashboard', [DashboardController::class,'dashboard'])->name('dashboard');
-    Route::resource('/categories',CategoryController::class);
-    Route::resource('/lessons',LessonController::class);
-    Route::resource('/roles',RoleController::class);
+    Route::resource('categories',CategoryController::class);
+    Route::resource('lessons',LessonController::class);
+    Route::resource('roles',RoleController::class);
 });

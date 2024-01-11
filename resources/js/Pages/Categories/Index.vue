@@ -24,25 +24,24 @@ const deleteCategory = id => {
         Inertia.delete(route('categories.destroy', id))
     }
 }
-
 </script>
 
 <template>
-    <AppLayout>
+    <AppLayout title="Categories">
         <template #header>
             <h1 class="font-semibold text-xl text-gray-800 leading-tight">Categories</h1>
         </template>
         <div class="py-12">
             <div class="max-w-7x6 mx-auto sm:px-6 lg:px-8">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <div class="flex justify-between">
+                    <div class="flex justify-between" v-if="$page.props.user.permissions.includes('create categories')">
                         <Link :href="route('categories.create')"
                               class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
                             Create category
                         </Link>
                     </div>
 
-                    <div class="met-4">
+                    <div class="mt-4">
                         <ul role="list" class="divide-y divide-gray-100">
                             <li v-for="category in categories.data" :key="category.id"
                                 class="flex justify-between gap-x-6 py-5">
