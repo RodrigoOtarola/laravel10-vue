@@ -53,18 +53,24 @@ class CategoryController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Parametros:
+     * id: id de la categoria a modificar.
      */
-    public function update(Request $request, string $id)
+    public function update(CategoryRequest $request, Category $category)
     {
-        //
+        $category->update($request->validated());
+
+        //return redirect()->route('categories.index');
+        return redirect('categories');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Category $category)
     {
-        //
+        $category->delete();
+
+        return redirect()->route('categories.index');
     }
 }

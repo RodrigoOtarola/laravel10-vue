@@ -9,6 +9,8 @@ export default {
 //Layout de la app
 import AppLayout from "@/Layouts/AppLayout.vue";
 import {Link} from '@inertiajs/vue3'
+import { Inertia } from '@inertiajs/inertia'
+import DangerButton from "@/Components/DangerButton.vue";
 
 //Defincion de props para traer categories
 defineProps({
@@ -20,7 +22,7 @@ defineProps({
 
 //Funcion delete
 const deleteCategory = id => {
-    if (confirm('Estas seguro?')) {
+    if(confirm('Estas seguro?')) {
         Inertia.delete(route('categories.destroy', id))
     }
 }
@@ -52,8 +54,8 @@ const deleteCategory = id => {
                                 </div>
                                 <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
                                     <p class="text-md leading-6 text-gray-900">
-                                        <Link :href="route('categories.edit',category.id)"> Edit</Link>
-                                        <Link @click="deleteCategory(category.id)"> Delete</Link>
+                                        <Link :href="route('categories.edit',category.id)" v-if="$page.props.user.permissions.includes('update categories')" class="py-2 px-4"> Edit</Link>
+                                        <DangerButton @click="deleteCategory(category.id)" v-if="$page.props.user.permissions.includes('delete categories')" class="py-2 px-4"> Delete</DangerButton>
                                     </p>
                                 </div>
                             </li>

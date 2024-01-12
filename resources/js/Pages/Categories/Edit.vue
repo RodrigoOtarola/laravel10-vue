@@ -15,10 +15,11 @@ const props = defineProps({
         required: true
     }
 })
-
+//Recibe el name de la category
 const form = useForm({
     name: props.category.name
 })
+
 </script>
 <template>
     <AppLayout>
@@ -29,6 +30,7 @@ const form = useForm({
             <div class="max-w-7-xl mx-auto sm:px-6 lg:px8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 bg-white border-b border-gray-200">
+                        <!--:updating="true", que fue declarada en CategoryForm como false, solo es true cuando fomulario se quiere actualizar-->
                         <CategoryForm :updating="true" :form="form" @submit="form.put(route('categories.update',category.id))"></CategoryForm>
                     </div>
                 </div>
