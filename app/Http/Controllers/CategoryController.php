@@ -11,11 +11,11 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
+    const paginate_categories = 25;
     public function index()
     {
 
-        define('paginate_categories',5);
-        $categories = Category::paginate(paginate_categories);
+        $categories = Category::paginate(self::paginate_categories);
         return inertia('Categories/Index',['categories'=>$categories]);
     }
 

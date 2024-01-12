@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Lesson;
+use App\Models\Level;
 use Illuminate\Http\Request;
 
 class LessonController extends Controller
@@ -9,9 +12,11 @@ class LessonController extends Controller
     /**
      * Display a listing of the resource.
      */
+    const paginate_lessons = 25;
     public function index()
     {
-        return 'Hola desde lessons';
+        $lessons = Lesson::paginate(self::paginate_lessons);
+        return inertia('Lessons/Index',['lessons'=>$lessons]);
     }
 
     /**
@@ -19,7 +24,9 @@ class LessonController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        $levels = Level::all();
+        return inertia('Lessons/Create',['categories'=>$categories,'levels'=>$levels]);
     }
 
     /**
