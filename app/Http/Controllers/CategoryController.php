@@ -13,7 +13,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::paginate(25);
+
+        define('paginate_categories',5);
+        $categories = Category::paginate(paginate_categories);
         return inertia('Categories/Index',['categories'=>$categories]);
     }
 
