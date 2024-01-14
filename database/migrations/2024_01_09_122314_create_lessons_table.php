@@ -18,6 +18,7 @@ return new class extends Migration {
             $table->string('content_uri');
             $table->string('pdf_uri');
             $table->unsignedInteger('level_id');
+            $table->boolean('is_free')->default(false);
             $table->timestamps();
 
             //Relacion cn Levels

@@ -1,17 +1,30 @@
 <script>
 export default {
-    name:'LessonsCreate'
+    name: 'LessonsCreate'
 }
 </script>
 
 <script setup>
 import AppLayout from "@/Layouts/AppLayout.vue";
-import { useForm } from "@inertiajs/vue3";
+import {useForm} from "@inertiajs/vue3";
 import LessonForm from "@/Components/Lessons/Form.vue"
+
+//aAra recibir los arreglos de levels y categories
+defineProps({
+    levels: {
+        type: Object,
+        required: true
+    },
+    categories: {
+        type: Object,
+        required: true
+    }
+})
 
 const form = useForm({
     name: ''
 })
+
 </script>
 
 <template>
@@ -24,7 +37,8 @@ const form = useForm({
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                         <div class="p-6 bg-white border-b border-gray-200">
-                            <LessonForm :form="form" @submit="form.post(route('lessons.store'))">
+                            <LessonForm :form="form" :levels="levels" :categories="categories"
+                                        @submit="form.post(route('lessons.store'))">
 
                             </LessonForm>
                         </div>
