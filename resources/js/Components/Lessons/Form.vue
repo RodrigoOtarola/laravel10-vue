@@ -14,6 +14,7 @@ import PrimaryButton from "@/Components/PrimaryButton.vue";
 import SecondaryButton
     from "../../../../vendor/laravel/jetstream/stubs/inertia/resources/js/Components/SecondaryButton.vue";
 import Checkbox from "../../../../vendor/laravel/jetstream/stubs/inertia/resources/js/Components/Checkbox.vue";
+import CollectionSelector from "@/Components/Common/CollectionSelector.vue";
 
 defineProps({
     form: {
@@ -74,6 +75,8 @@ defineEmits(['submit'])
                     <option v-for="level in levels" :value="level.id">{{ level.name }}</option>
                 </select>
                 <InputError :message="$page.props.errors.level_id" class="mt-2"/>
+
+                <CollectionSelector :collection="categories"></CollectionSelector>
 
             </div>
         </template>
